@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number guessing game</title>
+</head>
+<style>
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      width: 50%;
+      max-width: 800px;
+      min-width: 480px;
+      margin: 0 auto;
+    }
+    .lastResult {
+      color: white;
+      padding: 3px;
+    }
+</style>
+<body>
+    <h1>Number guessing game</h1>
+
+    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+    <div class="form">
+      <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
+      <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <script defer>
+      var randomNumber = Math.floor(Math.random() * 100) + 1; //floor는 소수 첫째 자리 버림. 0이 나올 수도 있으므로 +1
+
+      var guesses = document.querySelector('.guesses');
+      var lastResult = document.querySelector('.lastResult');
+      var lowOrHi = document.querySelector('.lowOrHi');
+
+      var guessSubmit = document.querySelector('.guessSubmit');
+      var guessField = document.querySelector('.guessField');
+
+      var guessCount = 1;
+      var resetButton;
+      guessField.focus();
+
+      function checkGuess() {
+        var userGuess = Number(guessField.value); //guessField의 값을 숫자 변환 변환 못 하면 NaN
+        if (guessCount === 1) {
+          guesses.textContent = 'Previous guesses: '; //innerText 보다 먼저 나와서 호환성이 좋고 복수 공백 유지(크롬은 아님) 가볍다.
+        }
+        guesses.textContent += userGuess + ' ';
+
+        if (userGuess === randomNumber) {
+          lastResult.textContent = 'Congratulations! You got it right!';
+          lastResult.style.color = 'green';
+          lowOrHi.textContent = '';
+          setGameOver();
+        } else if (guessCount === 10) {
+          lastResult.textContent = 'Game Over!!!';
+          setGameOver();
+        } else {
+          lastResult.textContent = 'Wrong!';
+          lastResult.style.color = 'red';
+          if (userGuess < randomNumber) {
+            lowOrHi.textContent = 'Last guess was too low!';
+          } else if (userGuess > randomNumber) {
+            lowOrHi.textContent = 'Last guess was too high!'
+          }
+        }
+
+        guessCount++;
+        guessField.value = '';
+        guessField.focus();
+      }
+
+      function setGameOver() {
+        guessField.disabled = true;
+        guessSubmit.disabled = true;
+        resetButton = document.createElement('button');
+        resetButton.textContent = 'Start new game?'
+        document.body.appendChild(resetButton);
+        resetButton.addEventListener('click', resetGame);
+      }
+
+      function resetGame() {
+        guessCount = 1;
+
+        var resetParas = document.querySelectorAll('.resultParas p');
+        for (var i =0; i < resetParas.lenght; i++){
+          resetParas[i].textContent = '';
+        }
+
+        resetButton.parentNode.removeChild(resetButton);
+
+        guessField.disabled = false;
+        guessSubmit.disabled = false;
+        guessField.value = '';
+        guessField.focus();
+
+        lastResult.style.color = 'black';
+
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+      }
+
+      guessSubmit.addEventListener('click', checkGuess);
+    </script>
+</body>
+</html>
