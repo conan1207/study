@@ -30,6 +30,14 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 
 
 
+
+
+**검색엔진최적화 (SEO)**
+
+- META 태그
+- Robot.txt
+- 적절한 시맨틱 태그 사용
+
 <hr />
 
 # CSS
@@ -37,6 +45,23 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 
 <hr />
 
+**코드컨벤션 (유지보수 용이 - 모든 언어에서 해당)**
+
+
+
+**Reflow & Repaint 최소화**
+
+- CSS로 작성 후, JS로 Class 추가 방식 (DOM 구조상 끝단의 노드에 class)
+- 하위 선택자 최대한 줄이기 
+- will-change 속성 사용 (ie는 안 됨)
+
 # JavaScript
 
 <hr />
+
+````javascript
+// 기본 동작 방지
+return false; // ex) onClick
+e.preventDefault(); // 함수식에 (React)
+````
+
