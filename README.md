@@ -1,6 +1,7 @@
-# HTML
+# HTML ❕
 
-**Google에서 css파일이나 font파일 우선 로드하는 법...! ** 
+**Google에서 css파일이나 font파일 우선 로드하는 법...!** 
+
 리포팅툴 사용하는데 폰트 로드가 나중에 돼서 화면이 자꾸 깨졌다.(크롬)  
 저것을 깨닫기 전에 내가 코드 작성을 잘못한 줄 알고 눈물의 서커스를 함.    
 우선적으로 리소스 하는 법 외에 나중에 리소스 하는 법도 있음.      
@@ -20,7 +21,7 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 
 이때는 web.config 파일에 확장명을 추가해주면 된다.
 
-``````
+```
 <system.webServer>
       <staticContent>
             <mimeMap fileExtension=".mp4" mimeType="application/octet-stream" />
@@ -40,7 +41,7 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 
 <hr />
 
-# CSS
+# CSS ❕
 
 
 <hr />
@@ -55,13 +56,13 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 - 하위 선택자 최대한 줄이기 
 - will-change 속성 사용 (ie는 안 됨)
 
-# JavaScript
+# JavaScript ❕
 
 <hr />
 
-````javascript
+```javascript
 // 기본 동작 방지
 return false; // ex) onClick
 e.preventDefault(); // 함수식에 (React)
-````
+```
 
