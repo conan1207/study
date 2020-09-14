@@ -1,23 +1,27 @@
 # HTML ❕
 
-**Google에서 css파일이나 font파일 우선 로드하는 법...!** 
+**Google에서 css파일이나 font파일 우선 로드하는 법...!**
 
 리포팅툴 사용하는데 폰트 로드가 나중에 돼서 화면이 자꾸 깨졌다.(크롬)  
-저것을 깨닫기 전에 내가 코드 작성을 잘못한 줄 알고 눈물의 서커스를 함.    
-우선적으로 리소스 하는 법 외에 나중에 리소스 하는 법도 있음.      
+저것을 깨닫기 전에 내가 코드 작성을 잘못한 줄 알고 눈물의 서커스를 함.  
+우선적으로 리소스 하는 법 외에 나중에 리소스 하는 법도 있음.
 
 ```html
-<link rel="preload" as="style" href="test.css">
-<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="test.woff2">
+<link rel="preload" as="style" href="test.css" />
+<link
+  rel="preload"
+  as="font"
+  crossorigin="crossorigin"
+  type="font/woff2"
+  href="test.woff2"
+/>
 ```
 
-[구글 디벨로퍼스 - 리소스우선순위지정](https://developers.google.com/web/fundamentals/performance/resource-prioritization?hl=ko "By. Sérgio Gomes")    			
+[구글 디벨로퍼스 - 리소스우선순위지정](https://developers.google.com/web/fundamentals/performance/resource-prioritization?hl=ko "By. Sérgio Gomes")
 
+**404.3 에러가 뜬다면?**
 
-
-**404.3 에러가 뜬다면?**   
-
-mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 떴다.  
+mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 떴다.
 
 이때는 web.config 파일에 확장명을 추가해주면 된다.
 
@@ -29,9 +33,7 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
   </system.webServer>
 ```
 
-
-
-
+HTML, CSS, JS 파일은 되도록이면 분리!
 
 **검색엔진최적화 (SEO)**
 
@@ -43,17 +45,14 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 
 # CSS ❕
 
-
 <hr />
 
 **코드컨벤션 (유지보수 용이 - 모든 언어에서 해당)**
 
-
-
 **Reflow & Repaint 최소화**
 
 - CSS로 작성 후, JS로 Class 추가 방식 (DOM 구조상 끝단의 노드에 class)
-- 하위 선택자 최대한 줄이기 
+- 하위 선택자 최대한 줄이기
 - will-change 속성 사용 (ie는 안 됨)
 
 # JavaScript ❕
@@ -65,4 +64,3 @@ mp4 파일로 동영상 팝업을 작업했는데 '404.3 - Not Found' 에러가 
 return false; // ex) onClick
 e.preventDefault(); // 함수식에 (React)
 ```
-
