@@ -68,5 +68,5 @@ HTML, CSS, JS 파일은 되도록이면 분리!
 ```javascript
 // 기본 동작 방지
 return false; // ex) onClick
-e.preventDefault(); // 함수식에 (React)
+e.preventDefault(); // 함수식에 기본 브라우저 이벤트를 취소함 passive한 이벤트에는 지양 (React)
 ```
